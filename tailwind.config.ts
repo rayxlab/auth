@@ -20,6 +20,7 @@ const config = {
     extend: {
       backgroundImage: {
         "anime": "url('/images/anime.jpg')",
+        "ghibli": "url('/images/ghibli.jpg')"
       },
       colors: {
         border: "hsl(var(--border))",
