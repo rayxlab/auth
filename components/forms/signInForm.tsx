@@ -10,6 +10,8 @@ import { CardWrapper } from "@/components/global/cardWrapper"
 import { SignInSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { FormError } from "@/components/forms/error";
+import { FormSuccess } from "@/components/forms/success";
 
 export const SignInForm = () => {
 
@@ -21,6 +23,10 @@ export const SignInForm = () => {
         }
     });
 
+    const onSubmit = (values: z.infer<typeof SignInSchema>) => {
+        console.log(values);
+    }
+
     return (
         
         <CardWrapper
@@ -30,7 +36,7 @@ export const SignInForm = () => {
             showSocial
         >
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(() => {})} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-4">
                        <FormField
                         control={form.control}
@@ -68,6 +74,8 @@ export const SignInForm = () => {
                         )}
                        />
                     </div>
+                    <FormError />
+                    <FormSuccess />
                     <Button type="submit" className="w-full">
                         Sign in
                     </Button>
