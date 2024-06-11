@@ -23,7 +23,9 @@ export const signin = async (values: z.infer<typeof SignInSchema>) => {
             email,
             password,
             redirectTo: DEFAULT_REDIRECT_ROUTE
-        })
+        });
+
+        return { success: "Sign in successful!" };
     } catch (error) {
         if(error instanceof AuthError) {
             switch (error.type) {

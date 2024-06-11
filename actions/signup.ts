@@ -14,7 +14,7 @@ export const signup = async (values: z.infer<typeof SignUpSchema>) => {
     const validatedFields = SignUpSchema.safeParse(values); //revalidate on server
 
     if(!validatedFields.success) {
-        return { error: "Inavlid Fields!" };
+        return { error: "Invalid Fields!" };
     }
 
     const { email, password, name } = validatedFields.data;

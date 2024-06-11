@@ -16,11 +16,11 @@ import { signin } from "@/actions/signIn";
 import { useState, useTransition } from "react";
 
 export const SignInForm = () => {
-    const [isPending, startTransition] = useTransition();
-
+    
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
-
+    const [isPending, startTransition] = useTransition();
+    
     const form = useForm<z.infer<typeof SignInSchema>>({
         resolver: zodResolver(SignInSchema),
         defaultValues: {
@@ -37,9 +37,13 @@ export const SignInForm = () => {
         startTransition(() => {
             signin(values)
             .then((data) => {
-                setError(data.error);
-                setSuccess(data.success);
+                setError(data?.error);
+                setSuccess(data?.success);
             })
+            .catch((err) => {
+                setError("An unexpected error occurred.");
+                console.error(err);
+            });
         });
     }
 
