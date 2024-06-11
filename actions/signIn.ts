@@ -13,7 +13,7 @@ export const signin = async (values: z.infer<typeof SignInSchema>) => {
     const validatedFields = SignInSchema.safeParse(values); //revalidate on server
 
     if(!validatedFields.success) {
-        return { error: "Inavlid Fields!" };
+        return { error: "Invalid Fields!" };
     }
 
     const { email, password } = validatedFields.data;
@@ -30,7 +30,7 @@ export const signin = async (values: z.infer<typeof SignInSchema>) => {
                 case "CredentialsSignin":
                     return { error: "Invalid credentials!" }
                 default:
-                    return { error: "Something went worng" }
+                    return { error: "Something went wrong" }
             }
         }
 
