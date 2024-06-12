@@ -84,7 +84,7 @@ export const SignUpForm = () => {
                                     <Input 
                                         {...field}
                                         disabled={isPending}
-                                        placeholder="exprays@rayxlab.gg"
+                                        placeholder="exprays@tss.gg"
                                         type="email"
                                     />
                                 </FormControl>
